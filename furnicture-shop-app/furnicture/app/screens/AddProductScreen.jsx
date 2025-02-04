@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
-import productService from '../services/productService';
+import ProductService from '../services/ProductService';
+
+
+
 
 export default function AddProductScreen({ navigation }) {
   const [name, setName] = useState('');

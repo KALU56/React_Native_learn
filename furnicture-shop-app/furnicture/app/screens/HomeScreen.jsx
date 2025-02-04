@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
-import productService from '../services/productService';
+import productService from '../services/ProductService';
+
 import ProductCard from '../components/ui/ProductCard';
 
 export default function HomeScreen({ navigation }) {
