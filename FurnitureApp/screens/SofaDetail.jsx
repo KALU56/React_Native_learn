@@ -12,19 +12,15 @@ export default function SofaDetail({ route, navigation }) {
 
   return (
     <View style={styles.detailContainer}>
-   
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
         <Text>{'<'}</Text>
       </TouchableOpacity>
 
-   
       <TouchableOpacity onPress={toggleFavorite} style={styles.favoriteButton}>
         <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
 
       <Image source={{ uri: selectedSofa.image }} style={styles.detailImage} />
-      
-
       <Text style={styles.title}>{selectedSofa.name}</Text>
       <Text style={styles.price}>{selectedSofa.price}</Text>
       <Text style={styles.description}>Minimalist and stylish, perfect for any home.</Text>

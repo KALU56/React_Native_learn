@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function Footer({ setFavorites }) {
+export default function Footer({ onClearFavorites }) {
   return (
     <View style={styles.footer}>
-      <TouchableOpacity onPress={() => setFavorites([])} style={styles.favoriteButtonFooter}>
+      <TouchableOpacity onPress={onClearFavorites} style={styles.favoriteButtonFooter}>
         <Text style={styles.footerText}>Clear Favorites</Text>
       </TouchableOpacity>
     </View>

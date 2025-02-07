@@ -2,25 +2,16 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function ProductCard({ item, toggleFavorite, favorites, setSelectedProduct, stockStatus }) {
-  const isFavorite = favorites.includes(item.id);
-
+export default function ProductCard({ item, toggleFavorite, isFavorite, onPress }) {
   return (
-    <TouchableOpacity style={styles.card} onPress={() => setSelectedProduct(item)}>
-      {/* Favorite Button */}
+    <TouchableOpacity style={styles.card} onPress={onPress}>
       <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
         <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
 
-      {/* Product Image */}
       <Image source={{ uri: item.image }} style={styles.productImage} />
-
-      {/* Product Details */}
       <Text style={styles.productName}>{item.name}</Text>
       <Text style={styles.productPrice}>{item.price}</Text>
-      <Text style={[styles.stockStatus, stockStatus[item.id] === "In Stock" ? styles.inStock : styles.outOfStock]}>
-        {stockStatus[item.id] || "Unknown"}
-      </Text>
     </TouchableOpacity>
   );
 }
@@ -57,16 +48,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'green',
     fontWeight: '600',
-  },
-  stockStatus: {
-    fontSize: 12,
-    marginTop: 5,
-    textAlign: 'center',
-  },
-  inStock: {
-    color: 'green',
-  },
-  outOfStock: {
-    color: 'red',
   },
 });
