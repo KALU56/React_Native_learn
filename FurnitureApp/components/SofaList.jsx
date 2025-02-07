@@ -1,47 +1,96 @@
+
+// screens/SofaDetail.js
 import React, { useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import Header from './Header';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-const sofas = [
-  { id: '1', name: 'Royal Palm Sofa', price: '$50.18', image: 'https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: '2', name: 'Leatherette Sofa', price: '$30.99', image: 'https://media.istockphoto.com/id/1366569235/photo/sofa-isolated-on-white-background.jpg?b=1&s=612x612&w=0&k=20&c=tIrsy0P78CdDNk7wJ-o9QBgA9Dw_53dmX9PQhsYABpY=' },
-  { id: '3', name: 'Modern Sofa', price: '$40.99', image: 'https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg?auto=compress&cs=tinysrgb&w=400' },
-  { id: '4', name: 'Minimalist Sofa', price: '$45.99', image: 'https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=400' },
-];
+export default function SofaDetail({ selectedSofa, onBack }) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-export default function SofaList({ onSelectSofa }) {
-  const [filteredSofas, setFilteredSofas] = useState(sofas);
-
-  const handleSearch = (query) => {
-    const filtered = sofas.filter((sofa) =>
-      sofa.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredSofas(filtered);
+  const toggleFavorite = () => {
+    setIsFavorite(prev => !prev);
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <Header onSearch={handleSearch} />
+    <View style={styles.detailContainer}>
+      {/* Back Button */}
+      <TouchableOpacity onPress={onBack} style={styles.backButton}>
+        <Text>{'<'}</Text>
+      </TouchableOpacity>
 
-      <FlatList
-        data={filteredSofas}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card} onPress={() => onSelectSofa(item)}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <Text style={styles.title}>{item.name}</Text>
-            <Text style={styles.price}>{item.price}</Text>
-          </TouchableOpacity>
-        )}
-        numColumns={2}
-      />
+      {/* Favorite Button */}
+      <TouchableOpacity onPress={toggleFavorite} style={styles.favoriteButton}>
+        <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
+      </TouchableOpacity>
+
+      {/* Sofa Image */}
+      <Image source={{ uri: selectedSofa.image }} style={styles.detailImage} />
+      
+      {/* Sofa Details */}
+      <Text style={styles.title}>{selectedSofa.name}</Text>
+      <Text style={styles.price}>{selectedSofa.price}</Text>
+      <Text style={styles.description}>Minimalist and stylish, perfect for any home.</Text>
+
+      {/* Buy Now Button */}
+      <TouchableOpacity style={styles.buyButton}>
+        <Text style={styles.buyText}>Buy Now</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  card: { flex: 1, margin: 10, backgroundColor: '#fff', padding: 10, borderRadius: 10, alignItems: 'center' },
-  image: { width: 100, height: 100, borderRadius: 10 },
-  title: { fontSize: 16, fontWeight: 'bold', marginTop: 5 },
-  price: { fontSize: 14, color: 'green', marginTop: 5 },
+  detailContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    padding: 20,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    padding: 10,
+    backgroundColor: '#ddd',
+    borderRadius: 5,
+  },
+  favoriteButton: {
+    position: 'absolute',
+    top: 40,
+    right: 20,
+    padding: 10,
+  },
+  detailImage: {
+    width: 250,
+    height: 250,
+    borderRadius: 10,
+    marginTop: 20,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  price: {
+    fontSize: 16,
+    color: 'green',
+    marginTop: 5,
+  },
+  description: {
+    fontSize: 14,
+    padding: 10,
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  buyButton: {
+    backgroundColor: '#007BFF',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buyText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
