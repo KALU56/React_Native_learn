@@ -1,4 +1,4 @@
-// screens/HomeScreen.js
+
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Header from '../components/Header';
@@ -28,13 +28,12 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header Section */}
+  
       <Header onSearch={handleSearch} />
 
-      {/* Promotion Section */}
+    
       <Promotion onAdPress={handleAdPress} />
 
-      {/* Products List Section */}
       <Text style={styles.sectionTitle}>Featured Products</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.productList}>

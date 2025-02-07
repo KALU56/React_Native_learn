@@ -1,4 +1,4 @@
-// components/Promotion.js
+
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -24,7 +24,7 @@ export default function Promotion({ onAdPress }) {
         scrollRef.current?.scrollTo({ x: nextIndex * 300, animated: true });
         return nextIndex;
       });
-    }, 2000); // Change every 2 seconds
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, []);

@@ -1,4 +1,4 @@
-// components/Header.js
+
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -8,12 +8,12 @@ export default function Header({ onSearch }) {
 
   return (
     <View style={styles.header}>
-      {/* Menu Button (☰) */}
+   
       <TouchableOpacity style={styles.icon}>
         <Ionicons name="menu" size={24} color="black" />
       </TouchableOpacity>
 
-      {/* Search Bar */}
+    
       <TextInput
         style={styles.searchBar}
         placeholder="Search"
