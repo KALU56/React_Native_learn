@@ -22,7 +22,7 @@ export default function Header({ onSearch }) {
         onSubmitEditing={() => onSearch(searchQuery)}
       />
 
-      {/* Cart Button (🛒) */}
+     
       <TouchableOpacity style={styles.icon}>
         <Ionicons name="cart-outline" size={24} color="black" />
       </TouchableOpacity>

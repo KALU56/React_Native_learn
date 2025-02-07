@@ -18,13 +18,12 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* Header with search and cart */}
+     
       <Header onSearch={(query) => console.log('Searching for:', query)} />
 
-      {/* Promotional Ads */}
       <Promotion onAdPress={() => console.log('Ad clicked!')} />
 
-      {/* Product List */}
+     
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
@@ -36,7 +35,7 @@ export default function HomeScreen({ navigation }) {
         )}
       />
 
-      {/* Footer with clear favorites */}
+    
       <Footer setFavorites={setFavorites} />
     </View>
   );
