@@ -1,11 +1,10 @@
-// screens/HomeScreen.js
 import React, { useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Promotion from '../components/Promotion';
 import ProductCard from '../components/ProductCard';
-import styles from './styles/HomeScreenStyles'; // Correct import path
+import styles from './styles/HomeScreenStyles';
 import { products } from '../utils/constants';
 
 export default function HomeScreen({ navigation }) {
@@ -27,6 +26,22 @@ export default function HomeScreen({ navigation }) {
     setFavorites([]);
   };
 
+  const onHomePress = () => {
+    navigation.navigate('Home');
+  };
+
+  const onFavoritePress = () => {
+    navigation.navigate('Favorites');
+  };
+
+  const onCategoryPress = () => {
+    navigation.navigate('Category');
+  };
+
+  const onProfilePress = () => {
+    navigation.navigate('Profile');
+  };
+
   return (
     <View style={styles.container}>
       <Header onSearch={(query) => console.log('Searching for:', query)} onCartPress={() => navigation.navigate('Cart')} />
@@ -42,9 +57,15 @@ export default function HomeScreen({ navigation }) {
             onPress={() => navigateToDetail(item)}
           />
         )}
-        numColumns={2} // Display products in 2 columns
+        numColumns={2}
       />
-      <Footer onClearFavorites={onClearFavorites} />
+      <Footer
+        onClearFavorites={onClearFavorites}
+        onHomePress={onHomePress}
+        onFavoritePress={onFavoritePress}
+        onCategoryPress={onCategoryPress}
+        onProfilePress={onProfilePress}
+      />
     </View>
   );
 }
