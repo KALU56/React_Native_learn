@@ -1,14 +1,12 @@
+// screens/HomeScreen.js
 import React, { useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Promotion from '../components/Promotion';
 import ProductCard from '../components/ProductCard';
-
-const products = [
-  { id: '1', name: 'Modern Sofa', price: '$250', image: 'https://example.com/sofa1.jpg' },
-  { id: '2', name: 'Classic Sofa', price: '$300', image: 'https://example.com/sofa2.jpg' },
-];
+import styles from './styles/HomeScreenStyles'; // Correct import path
+import { products } from '../utils/constants';
 
 export default function HomeScreen({ navigation }) {
   const [favorites, setFavorites] = useState([]);
@@ -44,12 +42,9 @@ export default function HomeScreen({ navigation }) {
             onPress={() => navigateToDetail(item)}
           />
         )}
+        numColumns={2} // Display products in 2 columns
       />
       <Footer onClearFavorites={onClearFavorites} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10, backgroundColor: '#fff' },
-});

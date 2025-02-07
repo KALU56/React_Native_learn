@@ -5,11 +5,15 @@ import { Ionicons } from '@expo/vector-icons';
 export default function ProductCard({ item, toggleFavorite, isFavorite, onPress }) {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
+      {/* Favorite Button */}
       <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
         <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
 
+      {/* Product Image */}
       <Image source={{ uri: item.image }} style={styles.productImage} />
+
+      {/* Product Details */}
       <Text style={styles.productName}>{item.name}</Text>
       <Text style={styles.productPrice}>{item.price}</Text>
     </TouchableOpacity>

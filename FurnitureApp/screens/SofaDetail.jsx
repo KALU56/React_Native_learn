@@ -7,24 +7,30 @@ export default function SofaDetail({ route, navigation }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const toggleFavorite = () => {
-    setIsFavorite(prev => !prev);
+    setIsFavorite((prev) => !prev);
   };
 
   return (
     <View style={styles.detailContainer}>
+      {/* Back Button */}
       <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
         <Text>{'<'}</Text>
       </TouchableOpacity>
 
+      {/* Favorite Button */}
       <TouchableOpacity onPress={toggleFavorite} style={styles.favoriteButton}>
         <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
 
+      {/* Product Image */}
       <Image source={{ uri: selectedSofa.image }} style={styles.detailImage} />
+
+      {/* Product Details */}
       <Text style={styles.title}>{selectedSofa.name}</Text>
       <Text style={styles.price}>{selectedSofa.price}</Text>
       <Text style={styles.description}>Minimalist and stylish, perfect for any home.</Text>
 
+      {/* Buy Now Button */}
       <TouchableOpacity style={styles.buyButton}>
         <Text style={styles.buyText}>Buy Now</Text>
       </TouchableOpacity>
