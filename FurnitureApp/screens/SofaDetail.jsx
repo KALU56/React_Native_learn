@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useCart } from '../context/CartContext';
 
 export default function SofaDetail({ route, navigation }) {
   const { selectedSofa } = route.params;
+  const { addToCart, removeFromCart } = useCart();
   const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -13,16 +15,18 @@ export default function SofaDetail({ route, navigation }) {
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
+    addToCart(1); // Update global cart count
   };
 
   const decreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
+      removeFromCart(1); // Update global cart count
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
       <View style={styles.detailContainer}>
         {/* Back Button */}
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
