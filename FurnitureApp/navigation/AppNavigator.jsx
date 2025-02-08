@@ -4,9 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import SofaDetail from '../screens/SofaDetail';
 import Cart from '../screens/Cart';
-import Favorites from '../screens/Favorites'; // Import Favorites
-import Category from '../screens/Category'; // Import Category
-import Profile from '../screens/Profile'; // Import Profile
 
 const Stack = createStackNavigator();
 
@@ -14,12 +11,21 @@ export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* HomeScreen with no header title and no extra space */}
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            headerTitle: '', // Remove the "Home" text
+            headerStyle: {
+              elevation: 0, // Remove shadow on Android
+              shadowOpacity: 0, // Remove shadow on iOS
+              height: 50, // Adjust header height if needed
+            },
+          }}
+        />
         <Stack.Screen name="SofaDetail" component={SofaDetail} />
         <Stack.Screen name="Cart" component={Cart} />
-        <Stack.Screen name="Favorites" component={Favorites} />
-        <Stack.Screen name="Category" component={Category} />
-        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
