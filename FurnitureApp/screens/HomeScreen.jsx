@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, Text, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Promotion from '../components/Promotion';
@@ -38,8 +37,14 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header onSearch={(query) => console.log('Searching for:', query)} onCartPress={() => navigation.navigate('Cart')} />
+      <Header
+        onSearch={(query) => console.log('Searching for:', query)}
+        onCartPress={() => navigation.navigate('Cart')}
+      />
       <Promotion onAdPress={() => console.log('Ad clicked!')} />
+
+      <Text style={styles.sectionTitle}>Featured Products</Text>
+
       <FlatList
         data={products}
         keyExtractor={(item) => item.id}
@@ -53,6 +58,7 @@ export default function HomeScreen({ navigation }) {
         )}
         numColumns={2}
       />
+
       <Footer
         onClearFavorites={onClearFavorites}
         onHomePress={onHomePress}

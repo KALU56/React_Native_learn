@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function ProductCard({ item, toggleFavorite, isFavorite, onPress }) {
+ 
 
   const priceValue = parseFloat(item.price.replace('$', '').replace(',', ''));
 
@@ -13,7 +14,6 @@ export default function ProductCard({ item, toggleFavorite, isFavorite, onPress 
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image source={{ uri: item.image }} style={styles.image} />
       
-
       <Text style={styles.title}>{item.name}</Text>
       <Text style={styles.price}>{formattedPrice}</Text> 
       <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>

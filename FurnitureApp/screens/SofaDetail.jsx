@@ -65,11 +65,6 @@ export default function SofaDetail({ route, navigation }) {
 
         <Image source={{ uri: selectedSofa.image }} style={styles.detailImage} />
 
-        <View style={styles.colorSelector}>
-          <View style={[styles.colorOption, { backgroundColor: '#2D5F68' }]} />
-          <View style={[styles.colorOption, { backgroundColor: '#D9C7B5' }]} />
-          <View style={[styles.colorOption, { backgroundColor: '#F5E7C5' }]} />
-        </View>
 
         <Text style={styles.title}>{selectedSofa.name}</Text>
         <Text style={styles.price}>${selectedSofa.price}</Text>

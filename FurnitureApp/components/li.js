@@ -23,20 +23,18 @@ export default function Promotion({ onAdPress }) {
         scrollRef.current?.scrollTo({ x: nextIndex * 300, animated: true });
         return nextIndex;
       });
-    }, 2000);
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <View style={styles.container}>
-      {/* Discount banner positioned over the images */}
-      <View style={styles.discountWrapper}>
-        <View style={styles.discountCard}>
-          <Text style={styles.discountText}>25% Discount</Text>
-        </View>
+      {/* Discount banner with slice effect */}
+      <View style={styles.discountCard}>
+        <Text style={styles.discountText}>25% Discount</Text>
       </View>
-
+      
       {/* Image carousel below the discount banner */}
       <ScrollView
         horizontal
@@ -57,18 +55,12 @@ export default function Promotion({ onAdPress }) {
 
 const styles = StyleSheet.create({
   container: { marginVertical: 10, position: 'relative' },
-  discountWrapper: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    zIndex: 1,
-  },
   discountCard: {
     backgroundColor: 'red',
     paddingVertical: 1,
     paddingHorizontal: 1,
     borderRadius: 10,
-    width: 85,
+    width: 65,
     height: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -81,8 +73,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     transform: [{ rotate: '-2deg' }],
   },
-  imageCarousel: {
-    marginTop: 20, // Decreased the margin to reduce the gap
-  },
+  
   image: { width: 300, height: 150, borderRadius: 10, marginHorizontal: 5 },
 });
