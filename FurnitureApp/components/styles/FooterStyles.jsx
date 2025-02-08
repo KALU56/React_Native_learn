@@ -1,4 +1,3 @@
-// components/styles/FooterStyles.js
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({

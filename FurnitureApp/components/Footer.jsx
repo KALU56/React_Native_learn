@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
+import styles from './styles/FooterStyles'; // Import styles from the separate file
 
 export default function Footer({ onHomePress, onFavoritePress, onCategoryPress, onProfilePress }) {
   const { clearCart } = useCart(); // Destructure clearCart from context
@@ -31,23 +32,3 @@ export default function Footer({ onHomePress, onFavoritePress, onCategoryPress, 
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#f8f8f8',
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-  },
-  iconButton: {
-    padding: 10,
-  },
-  favoriteButtonFooter: {
-    backgroundColor: '#FF6347',
-    padding: 10,
-    borderRadius: 5,
-  },
-});

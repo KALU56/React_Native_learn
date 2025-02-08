@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
 
@@ -13,6 +13,11 @@ export default function Header({ navigation }) {
       </TouchableOpacity>
 
       <Text style={styles.title}>Furniture Shop</Text>
+
+      <TextInput 
+        placeholder="Search..." 
+        style={styles.searchBar}
+      />
 
       <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={styles.cartContainer}>
         <Ionicons name="cart" size={24} color="black" />
@@ -45,6 +50,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  searchBar: {
+    flex: 1,
+    backgroundColor: '#f0f0f0',
+    padding: 8,
+    borderRadius: 8,
+    marginHorizontal: 10,
   },
   cartContainer: {
     position: 'relative',
