@@ -19,6 +19,7 @@ export default function HomeScreen({ navigation }) {
   };
 
   const navigateToDetail = (product) => {
+    console.log('Navigating to detail for product:', product);  // Debugging log
     navigation.navigate('SofaDetail', { selectedSofa: product });
   };
 

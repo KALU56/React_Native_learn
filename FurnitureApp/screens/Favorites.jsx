@@ -1,23 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+// import SofaDetail from './screens/SofaDetail';
 
-export default function Favorites() {
+
+const Stack = createStackNavigator();
+
+function AppNavigator() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Favorites Screen</Text>
-    </View>
+    <Stack.Navigator initialRouteName="SofaDetail">
+      <Stack.Screen name="SofaDetail" component={SofaDetail} />
+      <Stack.Screen name="Favorites" component={Favorites} />
+    </Stack.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-});

@@ -12,6 +12,8 @@ export default function SofaDetail({ route, navigation }) {
 
   const toggleFavorite = () => {
     setIsFavorite((prev) => !prev);
+    // Navigate to Favorites screen
+    navigation.navigate('Favorites');
   };
 
   const increaseQuantity = () => {
