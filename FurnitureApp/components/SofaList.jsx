@@ -1,5 +1,5 @@
 
-// screens/SofaDetail.js
+
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -13,25 +13,25 @@ export default function SofaDetail({ selectedSofa, onBack }) {
 
   return (
     <View style={styles.detailContainer}>
-      {/* Back Button */}
+     
       <TouchableOpacity onPress={onBack} style={styles.backButton}>
         <Text>{'<'}</Text>
       </TouchableOpacity>
 
-      {/* Favorite Button */}
+   
       <TouchableOpacity onPress={toggleFavorite} style={styles.favoriteButton}>
         <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
 
-      {/* Sofa Image */}
+    
       <Image source={{ uri: selectedSofa.image }} style={styles.detailImage} />
       
-      {/* Sofa Details */}
+
       <Text style={styles.title}>{selectedSofa.name}</Text>
       <Text style={styles.price}>{selectedSofa.price}</Text>
       <Text style={styles.description}>Minimalist and stylish, perfect for any home.</Text>
 
-      {/* Buy Now Button */}
+     
       <TouchableOpacity style={styles.buyButton}>
         <Text style={styles.buyText}>Buy Now</Text>
       </TouchableOpacity>

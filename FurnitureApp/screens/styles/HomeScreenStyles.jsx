@@ -1,4 +1,4 @@
-// screens/styles/HomeScreenStyles.js
+
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({

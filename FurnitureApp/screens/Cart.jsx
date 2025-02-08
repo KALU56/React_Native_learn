@@ -5,7 +5,7 @@ export default function Cart() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Your Cart</Text>
-      {/* Add cart items here */}
+      
     </View>
   );
 }

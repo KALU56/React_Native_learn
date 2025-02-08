@@ -1,13 +1,17 @@
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import AppNavigator from './navigation/AppNavigator'; // Your navigator
-import { CartProvider } from './context/CartContext'; // Ensure correct path to CartContext
+import AppNavigator from './navigation/AppNavigator';
+import { CartProvider } from './context/CartContext';
+import { FavoritesProvider } from './context/FavoritesContext'; 
 
 export default function App() {
   return (
     <NavigationContainer>
       <CartProvider>
-        <AppNavigator />
+        <FavoritesProvider>
+          <AppNavigator />
+        </FavoritesProvider>
       </CartProvider>
     </NavigationContainer>
   );

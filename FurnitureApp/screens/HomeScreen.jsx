@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,20 +7,12 @@ import Promotion from '../components/Promotion';
 import ProductCard from '../components/ProductCard';
 import styles from './styles/HomeScreenStyles';
 import { products } from '../utils/constants';
+import { useFavorites } from '../context/FavoritesContext';
 
 export default function HomeScreen({ navigation }) {
-  const [favorites, setFavorites] = useState([]);
-
-  const toggleFavorite = (productId) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.includes(productId)
-        ? prevFavorites.filter((id) => id !== productId)
-        : [...prevFavorites, productId]
-    );
-  };
+  const { favorites, toggleFavorite } = useFavorites();
 
   const navigateToDetail = (product) => {
-    console.log('Navigating to detail for product:', product);  // Debugging log
     navigation.navigate('SofaDetail', { selectedSofa: product });
   };
 
@@ -53,8 +46,8 @@ export default function HomeScreen({ navigation }) {
         renderItem={({ item }) => (
           <ProductCard
             item={item}
-            toggleFavorite={toggleFavorite}
-            isFavorite={favorites.includes(item.id)}
+            toggleFavorite={() => toggleFavorite(item)}
+            isFavorite={favorites.some((fav) => fav.id === item.id)}
             onPress={() => navigateToDetail(item)}
           />
         )}

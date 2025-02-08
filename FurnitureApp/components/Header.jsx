@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
+import styles from './styles/HeaderStyles'; 
 
 export default function Header({ navigation }) {
-  const { cartCount, clearCart } = useCart(); // Destructure clearCart from context
+  const { cartCount, clearCart } = useCart(); 
 
   return (
     <View style={styles.header}>
@@ -13,11 +14,6 @@ export default function Header({ navigation }) {
       </TouchableOpacity>
 
       <Text style={styles.title}>Furniture Shop</Text>
-
-      <TextInput 
-        placeholder="Search..." 
-        style={styles.searchBar}
-      />
 
       <TouchableOpacity onPress={() => navigation.navigate('Cart')} style={styles.cartContainer}>
         <Ionicons name="cart" size={24} color="black" />
@@ -28,56 +24,9 @@ export default function Header({ navigation }) {
         )}
       </TouchableOpacity>
 
-      {/* Clear Cart Button */}
       <TouchableOpacity onPress={clearCart} style={styles.clearCartButton}>
         <Ionicons name="trash" size={24} color="red" />
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  icon: {
-    padding: 10,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  searchBar: {
-    flex: 1,
-    backgroundColor: '#f0f0f0',
-    padding: 8,
-    borderRadius: 8,
-    marginHorizontal: 10,
-  },
-  cartContainer: {
-    position: 'relative',
-  },
-  cartBadge: {
-    position: 'absolute',
-    right: -6,
-    top: -4,
-    backgroundColor: 'red',
-    borderRadius: 10,
-    width: 18,
-    height: 18,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartBadgeText: {
-    color: 'white',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  clearCartButton: {
-    padding: 10,
-  },
-});

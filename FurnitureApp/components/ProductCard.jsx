@@ -3,54 +3,53 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function ProductCard({ item, toggleFavorite, isFavorite, onPress }) {
+
+  const priceValue = parseFloat(item.price.replace('$', '').replace(',', ''));
+
+
+  const formattedPrice = `$${priceValue.toFixed(2)}`;
+
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress}>
-      {/* Favorite Button */}
+    <TouchableOpacity onPress={onPress} style={styles.card}>
+      <Image source={{ uri: item.image }} style={styles.image} />
+      
+
+      <Text style={styles.title}>{item.name}</Text>
+      <Text style={styles.price}>{formattedPrice}</Text> 
       <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
-        <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? "red" : "gray"} />
+        <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
       </TouchableOpacity>
-
-      {/* Product Image */}
-      <Image source={{ uri: item.image }} style={styles.productImage} />
-
-      {/* Product Details */}
-      <Text style={styles.productName}>{item.name}</Text>
-      <Text style={styles.productPrice}>{item.price}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#FFF',
-    borderRadius: 10,
+    flex: 1,
+    margin: 5,
     padding: 10,
-    margin: 10,
+    backgroundColor: '#fff',
+    borderRadius: 8,
     alignItems: 'center',
-    width: 150,
-    elevation: 3,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 8,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  price: {
+    fontSize: 14,
+    color: 'green',
+    marginTop: 5,
   },
   favoriteButton: {
     position: 'absolute',
-    top: 8,
-    right: 8,
-    padding: 5,
-    zIndex: 10,
-  },
-  productImage: {
-    width: 120,
-    height: 120,
-    borderRadius: 10,
-    marginBottom: 8,
-  },
-  productName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  productPrice: {
-    fontSize: 14,
-    color: 'green',
-    fontWeight: '600',
+    top: 10,
+    right: 10,
   },
 });

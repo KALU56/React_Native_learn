@@ -19,8 +19,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const clearCart = () => {
-    setCart([]); // Empty the cart
-    setCartCount(0); // Reset cart count
+    setCart([]); 
+    setCartCount(0); 
   };
 
   return (

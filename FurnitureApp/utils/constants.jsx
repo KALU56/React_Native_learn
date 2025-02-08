@@ -47,4 +47,6 @@ export const products = [
     price: '$270',
     image: 'https://images.pexels.com/photos/1067556/pexels-photo-1067556.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
+  
+
 ];

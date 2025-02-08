@@ -1,18 +1,22 @@
+
 import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
-import styles from './styles/SofaDetailStyles'; // Import styles from the new file
+import { useFavorites } from '../context/FavoritesContext'; 
+import styles from './styles/SofaDetailStyles';
 
 export default function SofaDetail({ route, navigation }) {
   const { selectedSofa } = route.params;
   const { addToCart, removeFromCart } = useCart();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { toggleFavorite, favorites } = useFavorites(); 
   const [quantity, setQuantity] = useState(1);
   const [rating, setRating] = useState(0);
 
-  const toggleFavorite = () => {
-    setIsFavorite((prev) => !prev);
+  const isFavorite = favorites.some((item) => item.id === selectedSofa.id);
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(selectedSofa);
     navigation.navigate('Favorites');
   };
 
@@ -55,7 +59,7 @@ export default function SofaDetail({ route, navigation }) {
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={toggleFavorite} style={styles.favoriteButton}>
+        <TouchableOpacity onPress={handleToggleFavorite} style={styles.favoriteButton}>
           <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color={isFavorite ? "red" : "gray"} />
         </TouchableOpacity>
 

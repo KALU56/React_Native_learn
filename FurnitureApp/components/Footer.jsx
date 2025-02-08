@@ -2,10 +2,10 @@ import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
-import styles from './styles/FooterStyles'; // Import styles from the separate file
+import styles from './styles/FooterStyles'; 
 
 export default function Footer({ onHomePress, onFavoritePress, onCategoryPress, onProfilePress }) {
-  const { clearCart } = useCart(); // Destructure clearCart from context
+  const { clearCart } = useCart(); 
 
   return (
     <View style={styles.footer}>
@@ -25,7 +25,7 @@ export default function Footer({ onHomePress, onFavoritePress, onCategoryPress, 
         <Ionicons name="person" size={24} color="#000" />
       </TouchableOpacity>
 
-      {/* Clear Cart Button */}
+     
       <TouchableOpacity onPress={clearCart} style={styles.favoriteButtonFooter}>
         <Ionicons name="trash" size={24} color="#FFF" />
       </TouchableOpacity>
