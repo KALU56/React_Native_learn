@@ -43,7 +43,7 @@ export default function HomeScreen({ navigation }) {
       />
       <Promotion onAdPress={() => console.log('Ad clicked!')} />
 
-      <Text style={styles.sectionTitle}>Featured Products</Text>
+      <Text style={styles.sectionTitle}>Our Products</Text>
 
       <FlatList
         data={products}

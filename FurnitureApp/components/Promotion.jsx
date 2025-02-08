@@ -37,7 +37,7 @@ export default function Promotion({ onAdPress }) {
         </View>
       </View>
 
-      {/* Image carousel below the discount banner */}
+      
       <ScrollView
         horizontal
         pagingEnabled
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   discountWrapper: {
     position: 'absolute',
     top: 10,
-    left: 10,
+    left: 0, 
     zIndex: 1,
   },
   discountCard: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '-2deg' }],
   },
   imageCarousel: {
-    marginTop: 20, // Decreased the margin to reduce the gap
+    marginTop: 20, 
   },
   image: { width: 300, height: 150, borderRadius: 10, marginHorizontal: 5 },
 });
