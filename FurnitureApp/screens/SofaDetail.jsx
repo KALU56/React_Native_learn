@@ -8,6 +8,7 @@ export default function SofaDetail({ route, navigation }) {
   const { addToCart, removeFromCart } = useCart();
   const [isFavorite, setIsFavorite] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [rating, setRating] = useState(0); // Track rating
 
   const toggleFavorite = () => {
     setIsFavorite((prev) => !prev);
@@ -23,6 +24,26 @@ export default function SofaDetail({ route, navigation }) {
       setQuantity((prev) => prev - 1);
       removeFromCart(1); // Update global cart count
     }
+  };
+
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
+
+  const renderStars = () => {
+    let stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <TouchableOpacity key={i} onPress={() => handleRating(i)}>
+          <Ionicons
+            name={i <= rating ? 'star' : 'star-outline'}
+            size={24}
+            color="#FFD700"
+          />
+        </TouchableOpacity>
+      );
+    }
+    return stars;
   };
 
   return (
@@ -52,8 +73,9 @@ export default function SofaDetail({ route, navigation }) {
         <Text style={styles.title}>{selectedSofa.name}</Text>
         <Text style={styles.price}>${selectedSofa.price}</Text>
         <View style={styles.ratingContainer}>
-          <Ionicons name="star" size={16} color="#FFD700" />
-          <Text style={styles.ratingText}>4.5 (500 Reviews)</Text>
+          {/* Render rating stars */}
+          {renderStars()}
+          <Text style={styles.ratingText}>{rating} / 5</Text>
         </View>
 
         {/* Product Description */}

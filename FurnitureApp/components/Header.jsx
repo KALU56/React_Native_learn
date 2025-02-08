@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'; // Import StyleSheet here
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useCart } from '../context/CartContext';
 
 export default function Header({ navigation }) {
-  const { cartCount } = useCart();
+  const { cartCount, clearCart } = useCart(); // Destructure clearCart from context
 
   return (
     <View style={styles.header}>
@@ -21,6 +21,11 @@ export default function Header({ navigation }) {
             <Text style={styles.cartBadgeText}>{cartCount}</Text>
           </View>
         )}
+      </TouchableOpacity>
+
+      {/* Optionally, clear cart with a button in the header */}
+      <TouchableOpacity onPress={clearCart} style={styles.clearCartButton}>
+        <Ionicons name="trash" size={24} color="red" />
       </TouchableOpacity>
     </View>
   );
@@ -59,5 +64,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 12,
     fontWeight: 'bold',
+  },
+  clearCartButton: {
+    padding: 10,
   },
 });
