@@ -37,10 +37,7 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header
-        onSearch={(query) => console.log('Searching for:', query)}
-        onCartPress={() => navigation.navigate('Cart')}
-      />
+     
       <Promotion onAdPress={() => console.log('Ad clicked!')} />
 
       <Text style={styles.sectionTitle}>Our Products</Text>

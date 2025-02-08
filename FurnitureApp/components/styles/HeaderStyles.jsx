@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   header: {
+    paddingTop: '20px',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -25,7 +25,6 @@ export default function Footer({ onHomePress, onFavoritePress, onCategoryPress, 
         <Ionicons name="person" size={24} color="#000" />
       </TouchableOpacity>
 
-     
       <TouchableOpacity onPress={clearCart} style={styles.favoriteButtonFooter}>
         <Ionicons name="trash" size={24} color="#FFF" />
       </TouchableOpacity>

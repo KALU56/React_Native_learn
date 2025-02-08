@@ -30,7 +30,7 @@ export default function Promotion({ onAdPress }) {
 
   return (
     <View style={styles.container}>
-      {/* Discount banner positioned over the images */}
+  
       <View style={styles.discountWrapper}>
         <View style={styles.discountCard}>
           <Text style={styles.discountText}>25% Discount</Text>
