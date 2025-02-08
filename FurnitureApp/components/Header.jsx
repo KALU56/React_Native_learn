@@ -23,7 +23,7 @@ export default function Header({ navigation }) {
         )}
       </TouchableOpacity>
 
-      {/* Optionally, clear cart with a button in the header */}
+      {/* Clear Cart Button */}
       <TouchableOpacity onPress={clearCart} style={styles.clearCartButton}>
         <Ionicons name="trash" size={24} color="red" />
       </TouchableOpacity>

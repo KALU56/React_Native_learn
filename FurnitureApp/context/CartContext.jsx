@@ -1,23 +1,31 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
 
+export const useCart = () => useContext(CartContext);
+
 export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
-  const addToCart = (quantity) => {
-    setCartCount((prev) => prev + quantity);
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+    setCartCount((prevCount) => prevCount + 1);
   };
 
-  const removeFromCart = (quantity) => {
-    setCartCount((prev) => Math.max(prev - quantity, 0)); // Prevent negative cart count
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    setCartCount((prevCount) => prevCount - 1);
+  };
+
+  const clearCart = () => {
+    setCart([]); // Empty the cart
+    setCartCount(0); // Reset cart count
   };
 
   return (
-    <CartContext.Provider value={{ cartCount, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, cartCount, addToCart, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );
 };
-
-export const useCart = () => useContext(CartContext);
