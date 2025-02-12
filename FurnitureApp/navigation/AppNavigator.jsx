@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from 'react';
+import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
@@ -8,9 +8,7 @@ import Cart from '../screens/Cart';
 import SofaDetail from '../screens/SofaDetail';
 import LoginScreen from '../screens/LoginScreen';
 import Header from '../components/Header';
-
-// Create authentication context
-const AuthContext = createContext();
+import { AuthContext } from '../context/AuthContext';
 
 // Create navigators
 const Drawer = createDrawerNavigator();
@@ -52,13 +50,7 @@ function AuthStack() {
 
 // Main App Navigation with authentication handling
 export default function AppNavigator() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated } = useContext(AuthContext); // Use context here
 
-  return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
-      {isAuthenticated ? <DrawerNavigator /> : <AuthStack />}
-    </AuthContext.Provider>
-  );
+  return isAuthenticated ? <DrawerNavigator /> : <AuthStack />;
 }
-
-export { AuthContext };
